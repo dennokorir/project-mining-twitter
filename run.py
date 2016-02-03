@@ -1,4 +1,3 @@
-
 import time, sys, os, json,oauth, urllib, requests
 from collections import Counter
 from prettytable import PrettyTable
@@ -9,7 +8,7 @@ from prettytable import PrettyTable
 def search(query):
     print('Searching...'),
     sys.stdout.flush()
-    twitter_api = oauth.authenticate()#twitter.Twitter(auth=auth)
+    twitter_api = oauth.authenticate()
 
     q = query
 
@@ -17,10 +16,10 @@ def search(query):
 
     search_results = twitter_api.search.tweets(q = q , count = count, lang = 'en', result_type = 'recent', screen_name = query)
 
-    #for item in search_results:
+
     statuses = search_results['statuses']
 
-    status_texts = [status['text'] for status in statuses]#.encode('utf-8')
+    status_texts = [status['text'] for status in statuses]
 
     summary = [status.replace("\"","") for status in status_texts]
 
@@ -35,7 +34,7 @@ def search(query):
 
     display()
 
-def clean(param):#param should be a list
+def clean(param):
     print('Cleaning...'),
     sys.stdout.flush()
     stop_words = open('stop_words_lib.txt','r').readlines()
@@ -43,7 +42,7 @@ def clean(param):#param should be a list
     param = [word for word in param if word.lower() not in stop_words]
     return param
 
-def display(limit = 10):#param holds a data in form of a list
+def display(limit = 10):
     print('Reading...'),
     sys.stdout.flush()
     time.sleep(1)
@@ -62,7 +61,7 @@ def display(limit = 10):#param holds a data in form of a list
 
 
     table = [pt.add_row(row) for row in c.most_common()[:limit]]
-    #pt.add_column("Rank",[i+1 for i in range(len(table))])
+    pt.add_column("Rank",[i+1 for i in range(len(table))])
 
     pt.align["Status Text"], pt.align['Count'] = 'l', 'r'
     print(pt)
@@ -80,7 +79,7 @@ def display(limit = 10):#param holds a data in form of a list
         except:
             print("No result to analyse")
 
-
+'''
 def user_exit_input():
     command = input("Press Q to quit and any other key to continue \t")
     if command.lower() == 'q':
@@ -99,9 +98,8 @@ while True:
 
     search_query()
 
-
     if user_exit_input():#Always provide an option to quit
         print('Exiting...')
         break
 
-
+'''

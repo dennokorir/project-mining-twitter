@@ -1,5 +1,5 @@
 import twitter
-
+#twitter authentication module.
 def authenticate():
     CONSUMER_KEY = 'Xsetvxfd73PzqPgNgSP7loLt2'
     CONSUMER_SECRET = 'XDiPEMrL3aPfNY64YFdtmekYF4HA6mSU4T4Ea664bCzgK1XSUy'
