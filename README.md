@@ -19,7 +19,7 @@ sentiment analysis of search results
 INSTRUCTIONS
 ------------
 
- * open shell, navigate to project folder then execute run.py
+ * open shell, navigate to project folder then execute main.py
 
  * Enjoy
 
