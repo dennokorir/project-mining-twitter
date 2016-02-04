@@ -1,0 +1,18 @@
+Corrections on README and user Prompt
+Made corrections on readme to include important use cases. Also added
+prompts to allow users limit number of words to be ranked and displayed
+
+qw:
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   README.md
+#	modified:   __pycache__/run.cpython-34.pyc
+#	modified:   main.py
+#	modified:   run.py
+#	modified:   run2.py
+#

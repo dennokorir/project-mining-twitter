@@ -1,4 +1,4 @@
-import time, sys, os, json,oauth, urllib, requests
+import time, sys, os, json, oauth
 from collections import Counter
 from prettytable import PrettyTable
 
@@ -10,7 +10,7 @@ def search(query):
     sys.stdout.flush()
     twitter_api = oauth.authenticate()
 
-    count = 1000
+    count = 100000
     try:
         search_results = twitter_api.search.tweets(q = query , count = count, lang = 'en', result_type = 'recent', screen_name = query)
     except:
@@ -18,7 +18,7 @@ def search(query):
 
     statuses = search_results['statuses']
     status_texts = [status['text'].strip() for status in statuses]
-    summary = [status.replace("\"","") for status in status_texts]
+    status_texts = [status.replace("\"","") for status in status_texts]
     summary = "".join(status_texts).split(" ")
     summary = clean(summary)#remove stop words
 
@@ -35,7 +35,7 @@ def clean(param):
     sys.stdout.flush()
     stop_words = open('stop_words_lib.txt','r').readlines()
     stop_words = "".join(stop_words).split(",")
-    param = [word for word in param if word.lower() not in stop_words]
+    param = [word.lower() for word in param if word.lower() not in stop_words]
     param = [word for word in param if '@' not in word]
     return param
 
@@ -49,7 +49,7 @@ def display(term,limit = 10):
     data = [word.strip().encode('utf-8') for word in data]
 
     #remove file after retrieving data
-    os.remove('data.json')
+    #os.remove('data.json')
 
     pt = PrettyTable(field_names = ["Status Text", 'Count'])
     c = Counter(data)
@@ -61,7 +61,7 @@ def display(term,limit = 10):
     table = [pt.add_row(row) for row in c.most_common()[:limit]]
     pt.add_column("Rank",[i+1 for i in range(len(table))])
     pt.align["Status Text"], pt.align['Count'] = 'l', 'r'
-    print("\n \nShowing top %s prominent terms in search for %s \n \n" %(limit, term))
+    print("\n \nShowing top %s prominent terms in search for \"%s\" \n \n" %(limit, term))
     print(pt)
 
     if input("Get sentiments? Y to continue and anything else to exit \t").lower() == 'y':
@@ -72,10 +72,13 @@ def display(term,limit = 10):
         sentiment_data = [key for key, value in c.most_common()][:limit]#collect top ranked list
         alchemyapi = AlchemyAPI()
         Text = "".join([word.decode() for word in sentiment_data])
+        if len(Text)<=1:
+            print("No text to analyse")
+
         try:
             response = alchemyapi.sentiment("text",Text)
             print("Sentiment: ", response["docSentiment"]["type"])
         except:
-            print("No data to analyse")
+            print("Can't test sentiments now, try later")
 
 
