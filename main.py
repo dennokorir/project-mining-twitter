@@ -12,11 +12,11 @@ def search_query():
     twtter.search(search_string)
 
 
-#onstart
+
 while True:
 
     search_query()
 
-    if user_exit_input():#Always provide an option to quit
+    if user_exit_input():
         print('Exiting...')
         break

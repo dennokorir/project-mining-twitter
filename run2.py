@@ -9,7 +9,7 @@ from prettytable import PrettyTable
 def search(query):
     print('Searching...'),
     sys.stdout.flush()
-    twitter_api = oauth.authenticate()#twitter.Twitter(auth=auth)
+    twitter_api = oauth.authenticate()
 
     q = query
 
@@ -53,7 +53,7 @@ def display(limit = 10):#param holds a data in form of a list
     data_file.close()
     data = [word.encode('utf-8') for word in data]
 
-    #remove file after display finishes
+
     os.remove('data.json')
 
 
@@ -62,13 +62,13 @@ def display(limit = 10):#param holds a data in form of a list
 
     table = [pt.add_row(row) for row in c.most_common()[:limit]]
     pt.add_column("Rank",[i+1 for i in range(len(table))])
-    pt.align["Rank"], pt.align['Count'] = 'l', 'r'
+    pt.align["Status Text"], pt.align['Count'] = 'l', 'r'
     print(pt)
 
     if input("Get sentiments? Y to continue and anything else to exit \t").lower() == 'y':
         print('Checking feelings...'),
         sys.stdout.flush()
-
+        sentiment_data = [key for key,value in c.most_common()][:limit]
         from alchemyapi import AlchemyAPI
         alchemyapi = AlchemyAPI()
         Text = "".join([word.decode() for word in data])
@@ -92,11 +92,10 @@ def search_query():
     search(search_string)
 
 
-#onstart
+
 while True:
 
     search_query()
-
 
     if user_exit_input():#Always provide an option to quit
         print('Exiting...')
