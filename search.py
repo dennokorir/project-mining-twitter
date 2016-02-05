@@ -43,6 +43,7 @@ class Twitter_Metrics(object):
         stop_words = "".join(stop_words).split(",")
         param = [word.lower() for word in param if word.lower() not in stop_words]
         param = [word for word in param if '@' not in word]
+        param = [word for word in param if '#' not in word]
         return param
 
     def display(self, term, limit = 10):
@@ -80,11 +81,11 @@ class Twitter_Metrics(object):
             Text = "".join([word.decode() for word in sentiment_data])
             if len(Text)<=1:
                 print("No text to analyse")
-
-            try:
-                response = alchemyapi.sentiment("text",Text)
-                print("Sentiment: ", response["docSentiment"]["type"])
-            except:
-                print("Can't test sentiments now, try later")
+            else:
+                try:
+                    response = alchemyapi.sentiment("text",Text)
+                    print("Sentiment: ", response["docSentiment"]["type"])
+                except:
+                    print("Can't test sentiments now, try later")
 
 
