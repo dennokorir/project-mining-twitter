@@ -3,7 +3,6 @@ import sys
 def user_exit_input():
     command = input("Press Q to quit and any other key to continue \t")
     if command.lower() == 'q':
-
         return True
 
 def search_query():
@@ -16,7 +15,7 @@ def search_query():
 
 def main():
     instructions = "\n\n\n twittermetrics 101 \n" + \
-                        "=====================\n \n" + \
+                        "====================\n \n" + \
                         "Use twittermetrics to: \n\n" + \
                         "1. Search for tweets by username \n" + \
                         "2. Perform word count tests for commonly used words \n" + \

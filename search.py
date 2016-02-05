@@ -2,8 +2,7 @@ import time, sys, os, json, oauth
 from collections import Counter
 from prettytable import PrettyTable
 
-
-#uses a fetch, store, read, display cycle
+#uses a fetch, store, read, display workflow
 
 class Twitter_Metrics(object):
     def __init__(self):
