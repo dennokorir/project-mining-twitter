@@ -5,7 +5,7 @@ Introduction
 ------------
 
 The twitter metrics is used to search for tweets by user or search
-phrase perform a word frequency analysis. The results are printed
+phrase and perform a word frequency analysis. The results are printed
 to your shell ranking from most common. It also includes an optional
 sentiment analysis of search results
 
@@ -22,7 +22,7 @@ Instructions
 
  * `cd/navigate` to project folder then use `pip install -r requirements.txt` to install all dependencies
 
-  Use `python twittermetrics.py` to execute program
+ * Use `python twittermetrics.py` to execute program
 
  * Enjoy
 
