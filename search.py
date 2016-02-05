@@ -9,7 +9,7 @@ class Twitter_Metrics(object):
         pass
 
     def search(self, query):
-        print('Searching...'),
+        print('Searching...\n'),
         sys.stdout.flush()
         twitter_api = oauth.authenticate()
 
@@ -36,7 +36,7 @@ class Twitter_Metrics(object):
 
     def clean(self, param):
         #function to remove stop words and unnecessary data
-        print('Cleaning...'),
+        print('Cleaning...\n'),
         sys.stdout.flush()
         stop_words = open('stop_words_lib.txt','r').readlines()
         stop_words = "".join(stop_words).split(",")
@@ -46,7 +46,7 @@ class Twitter_Metrics(object):
         return param
 
     def display(self, term, limit = 10):
-        print('Reading...'),
+        print('Reading...\n'),
         sys.stdout.flush()
         time.sleep(1)
         data_file = open('data.json', 'r')
@@ -70,7 +70,7 @@ class Twitter_Metrics(object):
         print("\n \nShowing top %s prominent terms in search for \"%s\" \n \n" %(limit, term))
         print(pt)
 
-        if input("Get sentiments? Y to continue and anything else to exit \t").lower() == 'y':
+        if str(input("Get sentiments? Y to continue and anything else to exit \t")).lower() == 'y':
             print('Getting general feel of results...'),
             sys.stdout.flush()
 
