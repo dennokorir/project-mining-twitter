@@ -20,6 +20,8 @@ Instructions
 ------------
  * from shell, `git clone`  from this github repositoty --> https://github.com/dennokorir/project-mining-twitter.git
 
+ * Ensure you have pip installed.
+
  * `cd/navigate` to project folder then use `pip install -r requirements.txt` to install all dependencies
 
  * Use `python twittermetrics.py` to execute program

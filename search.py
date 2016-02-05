@@ -9,7 +9,7 @@ class Twitter_Metrics(object):
         pass
 
     def search(self, query):
-        print('Searching...\n'),
+        print('>>Searching...\n'),
         sys.stdout.flush()
         twitter_api = oauth.authenticate()
 
@@ -36,7 +36,7 @@ class Twitter_Metrics(object):
 
     def clean(self, param):
         #function to remove stop words and unnecessary data
-        print('Cleaning...\n'),
+        print('>>Cleaning...\n'),
         sys.stdout.flush()
         stop_words = open('stop_words_lib.txt','r').readlines()
         stop_words = "".join(stop_words).split(",")
@@ -46,7 +46,7 @@ class Twitter_Metrics(object):
         return param
 
     def display(self, term, limit = 10):
-        print('Reading...\n'),
+        print('>>Reading...\n'),
         sys.stdout.flush()
         time.sleep(1)
         data_file = open('data.json', 'r')
@@ -61,7 +61,7 @@ class Twitter_Metrics(object):
         c = Counter(data)
 
         try:
-            limit = int(input("How many records do you want to view? Press enter for default(10)"))
+            limit = int(input(">>How many records do you want to view? Press enter for default(10)\n\n"))
         except:
             pass
         table = [pt.add_row(row) for row in c.most_common()[:limit]]
@@ -70,8 +70,8 @@ class Twitter_Metrics(object):
         print("\n \nShowing top %s prominent terms in search for \"%s\" \n \n" %(limit, term))
         print(pt)
 
-        if str(input("Get sentiments? Y to continue and anything else to exit \t")).lower() == 'y':
-            print('Getting general feel of results...'),
+        if str(input(">>Get sentiments? Y to continue and anything else to exit \t")).lower() == 'y':
+            print('>>Getting general feel of results...'),
             sys.stdout.flush()
 
             from alchemyapi import AlchemyAPI
@@ -83,7 +83,7 @@ class Twitter_Metrics(object):
             else:
                 try:
                     response = alchemyapi.sentiment("text",Text)
-                    print("Sentiment: ", response["docSentiment"]["type"])
+                    print("\n\n>>Sentiment: ", response["docSentiment"]["type"])
                 except:
                     print("Can't test sentiments now, try later")
 
