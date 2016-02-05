@@ -22,15 +22,18 @@ class Twitter_Metrics(object):
             status_texts = [status.replace("\"","") for status in status_texts]
             summary = "".join(status_texts).split(" ")
             summary = self.clean(summary)#remove stop words
+
+            if summary:
+                data_file = open('data.json', 'w')
+                json.dump(summary,data_file)
+                data_file.close()
+
+            self.display(query)
+
+
         except:
             print("No response! Check your internet connection")
 
-        if summary:
-            data_file = open('data.json', 'w')
-            json.dump(summary,data_file)
-            data_file.close()
-
-        self.display(query)
 
     def clean(self, param):
         #function to remove stop words and unnecessary data

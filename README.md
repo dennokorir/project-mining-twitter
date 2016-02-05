@@ -20,7 +20,9 @@ Instructions
 ------------
  * from shell, `git clone`  from this github repositoty --> https://github.com/dennokorir/project-mining-twitter.git
 
- * `cd/navigate` to project folder then execute `python main.py`
+ * `cd/navigate` to project folder then use `pip install -r requirements.txt` to install all dependencies
+
+  Use `python twittermetrics.py` to execute program
 
  * Enjoy
 
@@ -28,7 +30,7 @@ Instructions
 Test Cases
 -------------
 Some good use cases include:
-	
+
 	1. Companies with a strong social media presence
 		1. Bank-KCB
 		2. Telecom-Safaricom
@@ -38,9 +40,7 @@ Some good use cases include:
 		1. Kenya
 		2. Somalia
 		3. Corruption
-		4. Tunoi
-		5. kidero
-		
+		4.
 	3. Newsrooms
 		1. Citizen
 		2. NTV
